@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    ory-hydra-client (1.11.6)
+    ory-hydra-client (1.11.7)
       typhoeus (~> 1.0, >= 1.0.1)
 
 GEM
