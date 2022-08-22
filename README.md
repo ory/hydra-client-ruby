@@ -30,7 +30,7 @@ are greatly appreciating any help!
 In the meanwhile, check out the meta-documentation for Ory's SDKs:
 
 - [Ory Cloud](https://www.ory.sh/docs/start-building/other-languages)
-- [Ory Hydra](https://www.ory.sh/hydra/docs/sdk)
-- [Ory Kratos](https://www.ory.sh/kratos/docs/sdk)
-- [Ory Keto](https://www.ory.sh/keto/docs/sdk)
+- [Ory Hydra](https://www.ory.sh/hydra/docs/sdk/index)
+- [Ory Kratos](https://www.ory.sh/kratos/docs/sdk/index)
+- [Ory Keto](https://www.ory.sh/keto/docs/sdk/index)
 - [Ory Oathkeeper](https://www.ory.sh/oathkeeper/docs/sdk)
