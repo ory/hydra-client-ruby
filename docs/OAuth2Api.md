@@ -1000,7 +1000,7 @@ end
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
 | **page_size** | **Integer** | Items per Page  This is the number of items per page to return. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination). | [optional][default to 250] |
-| **page_token** | **String** | Next Page Token  The next page token. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination). | [optional][default to &#39;1&#39;] |
+| **page_token** | **String** | Next Page Token  The next page token. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination). | [optional] |
 | **client_name** | **String** | The name of the clients to filter by. | [optional] |
 | **owner** | **String** | The owner of the clients to filter by. | [optional] |
 
@@ -1106,8 +1106,8 @@ require 'ory-hydra-client'
 
 api_instance = OryHydraClient::OAuth2Api.new
 opts = {
-  max_items: 789, # Integer | 
-  default_items: 789, # Integer | 
+  page_size: 789, # Integer | Items per Page  This is the number of items per page to return. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination).
+  page_token: 'page_token_example', # String | Next Page Token  The next page token. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination).
   issuer: 'issuer_example' # String | If optional \"issuer\" is supplied, only jwt-bearer grants with this issuer will be returned.
 }
 
@@ -1142,8 +1142,8 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **max_items** | **Integer** |  | [optional] |
-| **default_items** | **Integer** |  | [optional] |
+| **page_size** | **Integer** | Items per Page  This is the number of items per page to return. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination). | [optional][default to 250] |
+| **page_token** | **String** | Next Page Token  The next page token. For details on pagination please head over to the [pagination documentation](https://www.ory.sh/docs/ecosystem/api-design#pagination). | [optional] |
 | **issuer** | **String** | If optional \&quot;issuer\&quot; is supplied, only jwt-bearer grants with this issuer will be returned. | [optional] |
 
 ### Return type
@@ -1227,7 +1227,7 @@ No authorization required
 
 The OAuth 2.0 Device Authorize Endpoint
 
-This endpoint is not documented here because you should never use your own implementation to perform OAuth2 flows. OAuth2 is a very popular protocol and a library for your programming language will exists.  To learn more about this flow please refer to the specification: https://tools.ietf.org/html/rfc8628
+This endpoint is not documented here because you should never use your own implementation to perform OAuth2 flows. OAuth2 is a very popular protocol and a library for your programming language will exist.  To learn more about this flow please refer to the specification: https://tools.ietf.org/html/rfc8628
 
 ### Examples
 
@@ -1437,7 +1437,7 @@ No authorization required
 
 OAuth 2.0 Device Verification Endpoint
 
-This is the device user verification endpoint. The user is redirected here when trying to login using the device flow.
+This is the device user verification endpoint. The user is redirected here when trying to log in using the device flow.
 
 ### Examples
 
@@ -1693,7 +1693,7 @@ No authorization required
 
 ## revoke_o_auth2_consent_sessions
 
-> revoke_o_auth2_consent_sessions(subject, opts)
+> revoke_o_auth2_consent_sessions(opts)
 
 Revoke OAuth 2.0 Consent Sessions of a Subject
 
@@ -1706,15 +1706,16 @@ require 'time'
 require 'ory-hydra-client'
 
 api_instance = OryHydraClient::OAuth2Api.new
-subject = 'subject_example' # String | OAuth 2.0 Consent Subject  The subject whose consent sessions should be deleted.
 opts = {
+  subject: 'subject_example', # String | OAuth 2.0 Consent Subject  The subject whose consent sessions should be deleted.
   client: 'client_example', # String | OAuth 2.0 Client ID  If set, deletes only those consent sessions that have been granted to the specified OAuth 2.0 Client ID.
+  consent_request_id: 'consent_request_id_example', # String | Consent Request ID  If set, revoke all token chains derived from this particular consent request ID.
   all: true # Boolean | Revoke All Consent Sessions  If set to `true` deletes all consent sessions by the Subject that have been granted.
 }
 
 begin
   # Revoke OAuth 2.0 Consent Sessions of a Subject
-  api_instance.revoke_o_auth2_consent_sessions(subject, opts)
+  api_instance.revoke_o_auth2_consent_sessions(opts)
 rescue OryHydraClient::ApiError => e
   puts "Error when calling OAuth2Api->revoke_o_auth2_consent_sessions: #{e}"
 end
@@ -1724,12 +1725,12 @@ end
 
 This returns an Array which contains the response data (`nil` in this case), status code and headers.
 
-> <Array(nil, Integer, Hash)> revoke_o_auth2_consent_sessions_with_http_info(subject, opts)
+> <Array(nil, Integer, Hash)> revoke_o_auth2_consent_sessions_with_http_info(opts)
 
 ```ruby
 begin
   # Revoke OAuth 2.0 Consent Sessions of a Subject
-  data, status_code, headers = api_instance.revoke_o_auth2_consent_sessions_with_http_info(subject, opts)
+  data, status_code, headers = api_instance.revoke_o_auth2_consent_sessions_with_http_info(opts)
   p status_code # => 2xx
   p headers # => { ... }
   p data # => nil
@@ -1742,8 +1743,9 @@ end
 
 | Name | Type | Description | Notes |
 | ---- | ---- | ----------- | ----- |
-| **subject** | **String** | OAuth 2.0 Consent Subject  The subject whose consent sessions should be deleted. |  |
+| **subject** | **String** | OAuth 2.0 Consent Subject  The subject whose consent sessions should be deleted. | [optional] |
 | **client** | **String** | OAuth 2.0 Client ID  If set, deletes only those consent sessions that have been granted to the specified OAuth 2.0 Client ID. | [optional] |
+| **consent_request_id** | **String** | Consent Request ID  If set, revoke all token chains derived from this particular consent request ID. | [optional] |
 | **all** | **Boolean** | Revoke All Consent Sessions  If set to &#x60;true&#x60; deletes all consent sessions by the Subject that have been granted. | [optional] |
 
 ### Return type
