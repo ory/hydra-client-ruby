@@ -68,6 +68,7 @@ lib/ory-hydra-client/api/oidc_api.rb
 lib/ory-hydra-client/api/wellknown_api.rb
 lib/ory-hydra-client/api_client.rb
 lib/ory-hydra-client/api_error.rb
+lib/ory-hydra-client/api_model_base.rb
 lib/ory-hydra-client/configuration.rb
 lib/ory-hydra-client/models/accept_device_user_code_request.rb
 lib/ory-hydra-client/models/accept_o_auth2_consent_request.rb
